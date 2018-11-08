@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: order-consumer
+server:
+  port: 9084
+order:
+  service:
+    version: 1.0.0
+dubbo:
+  application:
+    name: order-consumer
+
+  registry:
+    protocol: zookeeper
+    address: zookeeper://localhost:2181
+    id: order-consumer
+management:
+  endpoint:
+    dubbo-configs:
+      enabled: true
+    dubbo:
+      enabled: true
+    dubbo-services:
+      enabled: true
+    dubbo-properties:
+      enabled: true
+    dubbo-shutdown:
+      enabled: true
+    dubbo-references:
+      enabled: true
+  health:
+    dubbo:
+      status:
+        defaults: memory
+        extras: load,threadpool
+  endpoints:
+    web:
+      exposure:
+        include: '*'

@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: order-provider
+#server:
+#  port: 9090
+dubbo:
+#  provider:
+#    token: 123456
+  registry:
+    protocol: zookeeper
+    address: zookeeper://localhost:2181
+    id: order-provider
+
+  protocol:
+    port: 20881
+    name: dubbo
+    id: dubbo
+    status: server
+
+
+#  protocol:
+#    port: 20777
+#    name: rmi
+#    id: rmi
+  application:
+    name: order-provider
+    id: order-provider
+    qos-enable: true
+    qos-port: 9089
+  monitor:
+
+  scan:
+    basePackages: com.demo.dubbo.orderweb.service
+
+order:
+  service:
+    version: 1.0.0
